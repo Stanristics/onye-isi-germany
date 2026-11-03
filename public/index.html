@@ -401,7 +401,9 @@ const LOOKS = [["knotless-braids", "Knotless braids"], ["box-braids", "Box braid
 const SHADES = [["", "Keep my colour"], ["black", "Natural black"], ["brown", "Dark brown"], ["honey", "Honey blonde"], ["burgundy", "Burgundy"], ["copper", "Copper"]];
 const toDataUrl = blob => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = no; r.readAsDataURL(blob); });
 const TRYON_ERR = { login_required: "Please log in to use the try-on.", rate_limited: "You have reached the limit for now. Please try again later.",
-  moderated: "That photo could not be processed. Try a clear, well-lit photo of your face and hair.", not_configured: "The try-on isn’t available yet." };
+  moderated: "That photo could not be processed. Try a clear, well-lit photo of your face and hair.", not_configured: "The try-on isn’t available yet (no AI provider key is set).",
+  not_deployed: "The try-on service isn’t set up on this site yet.", bad_request: "That photo could not be used. Try a smaller JPG or PNG.", timeout: "The preview took too long. Please try again." };
+const fail = (d, code) => Object.assign(new Error(code || d.error || "provider_error"), { detail: d.detail });
 async function tryOn(file) {
   const msg = $("t-msg"), out = $("t-out"); msg.className = "msg"; out.innerHTML = "";
   const { data } = sb ? await sb.auth.getSession() : { data: {} };
@@ -413,18 +415,19 @@ async function tryOn(file) {
     const provider = new URLSearchParams(location.search).get("provider") || undefined;  // ?provider=gemini or flux, for comparing
     let r = await fetch("/api/tryon", { method: "POST", headers, body: JSON.stringify({ image, style: $("t-style").value, color: $("t-color").value || undefined, provider }) });
     let d = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(d.error || "provider_error");
+    if (r.status === 404) throw fail(d, "not_deployed");
+    if (!r.ok) throw fail(d);
     for (let i = 0; !d.image && d.job && i < 40; i++) {            // FLUX is asynchronous: poll until ready
       await new Promise(ok => setTimeout(ok, 2000));
       r = await fetch("/api/tryon?job=" + encodeURIComponent(d.job), { headers }); d = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(d.error || "provider_error");
+      if (!r.ok) throw fail(d);
     }
     if (!d.image) throw new Error("timeout");
     out.innerHTML = `<figure><img src="${image}" alt="Your original photo" /><figcaption>Original</figcaption></figure>
       <figure><img src="${esc(d.image)}" alt="AI preview of the new hairstyle" /><figcaption>AI preview (approximate) · <a href="${esc(d.image)}" download="onye-isi-preview.png">Download</a></figcaption></figure>`;
     msg.className = "msg ok"; msg.textContent = "Here is your preview. Show it to your stylist as inspiration.";
   } catch (e) {
-    msg.className = "msg err"; msg.textContent = TRYON_ERR[e.message] || "The preview could not be created. Please try again.";
+    msg.className = "msg err"; msg.textContent = (TRYON_ERR[e.message] || "The preview could not be created. Please try again.") + (e.detail ? " [" + e.detail + "]" : "");
   }
   $("t-go").disabled = false;
 }
