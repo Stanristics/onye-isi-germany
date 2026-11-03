@@ -40,6 +40,8 @@ function limited(uid) {
   recent.push(now); hits.set(uid, recent); dayCount++; if (hits.size > 5000) hits.clear();
   return false;
 }
+// With TRYON_DEBUG=1 the real provider error is shown on the page. Turn it off again after testing.
+const providerFail = msg => json({ error: "provider_error", ...(env("TRYON_DEBUG") === "1" ? { detail: String(msg).slice(0, 300) } : {}) }, 502);
 const isBfl = u => { try { const x = new URL(u); return x.protocol === "https:" && /(^|\.)bfl\.ai$/.test(x.hostname); } catch { return false; } };
 
 async function gemini(prompt, mime, b64) {
@@ -49,10 +51,10 @@ async function gemini(prompt, mime, b64) {
     body: JSON.stringify({ contents: [{ parts: [{ text: prompt }, { inline_data: { mime_type: mime, data: b64 } }] }],
       generationConfig: { responseModalities: ["TEXT", "IMAGE"] } })
   });
-  if (!r.ok) { console.error("Gemini", r.status, (await r.text()).slice(0, 300)); return json({ error: "provider_error" }, 502); }
-  const part = (await r.json()).candidates?.[0]?.content?.parts?.find(p => p.inlineData || p.inline_data);
-  const inl = part?.inlineData || part?.inline_data;
-  if (!inl) return json({ error: "moderated" }, 422);
+  if (!r.ok) { const t = (await r.text()).slice(0, 300); console.error("Gemini", r.status, t); return providerFail(`Gemini ${r.status}: ${t}`); }
+  const parts = (await r.json()).candidates?.[0]?.content?.parts || [];
+  const inl = parts.map(p => p.inlineData || p.inline_data).find(Boolean);
+  if (!inl) return json({ error: "moderated", ...(env("TRYON_DEBUG") === "1" ? { detail: "Gemini returned no image: " + (parts.find(p => p.text)?.text || "").slice(0, 200) } : {}) }, 422);
   return json({ image: `data:${inl.mimeType || inl.mime_type || "image/png"};base64,${inl.data}` });
 }
 async function fluxStart(prompt, b64) {
@@ -60,9 +62,9 @@ async function fluxStart(prompt, b64) {
     method: "POST", headers: { "x-key": env("BFL_API_KEY"), "Content-Type": "application/json" },
     body: JSON.stringify({ prompt, input_image: b64 })
   });
-  if (!r.ok) { console.error("BFL", r.status, (await r.text()).slice(0, 300)); return json({ error: "provider_error" }, 502); }
+  if (!r.ok) { const t = (await r.text()).slice(0, 300); console.error("BFL", r.status, t); return providerFail(`FLUX ${r.status}: ${t}`); }
   const d = await r.json();
-  return isBfl(d.polling_url) ? json({ job: d.polling_url }) : json({ error: "provider_error" }, 502);
+  return isBfl(d.polling_url) ? json({ job: d.polling_url }) : providerFail("FLUX returned no polling URL");
 }
 async function fluxPoll(url) {
   if (!isBfl(url)) return json({ error: "bad_request" }, 400);
@@ -76,7 +78,7 @@ async function fluxPoll(url) {
     return json({ image: `data:${img.headers.get("content-type") || "image/png"};base64,${Buffer.from(await img.arrayBuffer()).toString("base64")}` });
   }
   if (/Moderated/.test(d.status || "")) return json({ error: "moderated" }, 422);
-  if (d.status === "Error" || d.status === "Task not found") return json({ error: "provider_error" }, 502);
+  if (d.status === "Error" || d.status === "Task not found") return providerFail("FLUX status: " + d.status);
   return json({ pending: true });
 }
 
@@ -105,7 +107,7 @@ export default async (req) => {
     (body.color ? `, in ${COLORS[body.color]} hair colour` : "") +
     `. Keep the face, facial features, skin tone, expression, clothing, pose, lighting and background exactly the same. Photorealistic result.`;
   try { return provider === "gemini" ? await gemini(prompt, m[1], m[2]) : await fluxStart(prompt, m[2]); }
-  catch (e) { console.error(e); return json({ error: "provider_error" }, 502); }
+  catch (e) { console.error(e); return providerFail(e.message); }
 };
 
 export const config = { path: "/api/tryon" };
