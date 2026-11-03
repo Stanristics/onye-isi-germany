@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ONYE ISI — African Hair Professionals in Germany</title>
+<meta name="description" content="Find and book trusted African hair professionals across Germany: braiding, locs, natural hair, barbing and weaves." />
+<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#1A1108;--ink2:#2A1D10;--cream:#FAF6EE;--card:#fff;--line:#E9E1D0;--muted:#7A6E5D;--gold:#C9A84C;--gold-d:#9C7F2E;--ok:#2F7D4F;--r:14px;--f:'DM Sans',system-ui,sans-serif;--d:'Fraunces',Georgia,serif}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:30;background:rgba(26,17,8,.96);backdrop-filter:blur(8px)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;color:#F3EBDA}
+.logo{font-family:var(--d);font-weight:700;font-size:21px;letter-spacing:.04em}.logo span{color:var(--gold)}
+.links{display:flex;align-items:center;gap:26px;font-size:14px}.links a:hover{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:10px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:14px;transition:.15s}
+.btn:hover{border-color:var(--gold)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink)}.btn.gold:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;color:#F3EBDA;border-color:rgba(255,255,255,.25)}
+.hero{background:linear-gradient(180deg,var(--ink),var(--ink2));color:#F3EBDA;padding:72px 0 84px;text-align:center}
+.eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+h1{font-family:var(--d);font-size:clamp(34px,6vw,58px);line-height:1.08;margin-bottom:16px}h1 em{font-style:normal;color:var(--gold)}
+.hero p{max-width:560px;margin:0 auto 30px;color:#CFC4AE;font-size:17px}
+.search{display:flex;gap:10px;max-width:640px;margin:0 auto;background:var(--card);padding:8px;border-radius:14px}
+.search input,.search select{flex:1;min-width:0;border:0;background:transparent;padding:10px 12px;color:var(--ink);font-size:15px}
+.search select{flex:0 0 150px;border-left:1px solid var(--line)}.search input:focus,.search select:focus{outline:none}
+section{padding:64px 0}h2{font-family:var(--d);font-size:clamp(26px,4vw,34px);margin-bottom:8px}.sub{color:var(--muted);margin-bottom:26px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.pill{padding:8px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-size:13.5px;font-weight:500}
+.pill.on,.pill:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.notice{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;text-align:left;transition:.18s;display:flex;flex-direction:column;gap:12px}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(26,17,8,.09);border-color:var(--gold)}
+.top{display:flex;gap:14px;align-items:center}
+.av{flex:none;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-family:var(--d);font-weight:700;font-size:18px;color:var(--ink)}
+.card h3{font-size:16px;line-height:1.3}.meta{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--gold-d);background:#F6EDD2;padding:3px 10px;border-radius:99px}
+.price{margin-top:auto;font-weight:600;font-size:14px}.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.step b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--gold);margin-bottom:12px;font-family:var(--d)}
+.step p{color:var(--muted);font-size:14.5px}
+.join{background:var(--ink);color:#F3EBDA}.join .sub{color:#CFC4AE}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formgrid .full{grid-column:1/-1}
+label{display:block;font-size:12.5px;font-weight:600;margin-bottom:5px}
+input,select,textarea{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:14.5px}
+textarea{resize:vertical;min-height:84px}
+.join input,.join select,.join textarea{border-color:rgba(255,255,255,.18)}
+.msg{margin-top:12px;font-size:14px;font-weight:600}.msg.ok{color:var(--ok)}.msg.err{color:#C0443B}.join .msg.ok{color:#7FD6A1}
+footer{background:var(--ink);color:#8F8470;text-align:center;font-size:13px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08)}
+dialog{margin:auto;width:min(560px,94vw);max-height:92vh;overflow:auto;border:0;border-radius:18px;padding:28px;background:var(--cream);color:var(--ink)}
+dialog::backdrop{background:rgba(26,17,8,.6);backdrop-filter:blur(3px)}
+.x{position:absolute;right:14px;top:12px;background:none;border:0;font-size:26px;line-height:1;color:var(--muted)}
+dialog h2{font-size:24px;margin-bottom:2px}
+.svc{list-style:none;margin:14px 0}.svc li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+.su{display:none}#aform.signup .su{display:block}
+.roles{display:flex;gap:18px;font-size:14px}.roles label{display:flex;align-items:center;gap:6px;font-weight:500;margin:0}.roles input{width:auto}
+.tabs{display:flex;gap:6px;margin:14px 0}
+.chip{display:inline-block;font-size:11.5px;font-weight:600;padding:2px 10px;border-radius:99px;background:#EEE6D3}
+.chip.confirmed,.chip.approved{background:#D6EEDD;color:#1E6B3F}.chip.cancelled,.chip.rejected{background:#F6D9D6;color:#9B2F26}
+.bk{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;font-size:14px;background:#fff}
+.bk .row{margin-top:8px}.bk .btn{padding:7px 12px;font-size:13px}
+h3.sec{font-family:var(--d);font-size:18px;margin:24px 0 4px}
+.av{overflow:hidden}.av img{width:100%;height:100%;object-fit:cover}
+.linkbtn{background:none;border:0;color:var(--gold-d);font-size:13px;text-decoration:underline;padding:0;margin-top:10px}
+#aform.signup #forgot{display:none}.btn.danger{color:#9B2F26;border-color:#E8BDB8}.prev{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:8px}
+.tout{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}.tout figure{margin:0}
+.tout img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}.tout figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+.consent{display:flex!important;gap:8px;align-items:flex-start;font-weight:500!important}.consent input{width:auto;margin-top:4px}
+@media (max-width:600px){.tout{grid-template-columns:1fr}}
+/* chat */
+#chat-fab{position:fixed;right:20px;bottom:20px;z-index:40;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+#chat{position:fixed;right:20px;bottom:76px;z-index:40;width:min(380px,calc(100vw - 40px));height:min(540px,70vh);background:var(--card);border:1px solid var(--line);border-radius:16px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 20px 50px rgba(26,17,8,.28)}
+#chat.open{display:flex}
+.ch{background:var(--ink);color:#F3EBDA;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px}
+.ch button{background:none;border:0;color:#F3EBDA;font-size:20px}
+#msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--cream)}
+.m{max-width:88%;padding:10px 13px;border-radius:12px;font-size:14px;overflow-wrap:anywhere}
+.m.bot{background:#fff;border:1px solid var(--line);align-self:flex-start}.m.me{background:var(--ink);color:#fff;align-self:flex-end}
+.m.err{color:#C0443B}.m p+p,.m p+ul,.m ul+p{margin-top:6px}.m ul{padding-left:18px}
+.cf{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}.cf input{flex:1}.cf .btn{padding:10px 14px}
+@media (max-width:760px){.links a:not(.btn){display:none}.steps,.formgrid{grid-template-columns:1fr}.search{flex-direction:column}.search select{flex:none;border-left:0;border-top:1px solid var(--line)}.hero{padding:48px 0 56px}section{padding:44px 0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="#top">ONYE <span>ISI</span></a>
+  <nav class="links" aria-label="Main"><a href="#browse">Find a stylist</a><a href="#tryon">Try a look</a><a href="#how">How it works</a><button class="btn ghost" id="nav-auth" type="button">Log in</button><a class="btn gold" href="#join">Join as a stylist</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div class="eyebrow">African hair professionals · Germany</div>
+  <h1>Hair that understands <em>you</em>, found near you</h1>
+  <p>Discover trusted braiders, loc specialists, natural-hair experts and barbers across Germany, and book in minutes.</p>
+  <div class="search" role="search">
+    <input id="q" type="search" placeholder="Search by name or style…" aria-label="Search stylists" />
+    <select id="city" aria-label="City"><option value="">All cities</option></select>
+  </div>
+</div></div>
+
+<section id="browse"><div class="wrap">
+  <h2>Find your stylist</h2><p class="sub">Filter by specialty and city, then open a profile to see services and book.</p>
+  <div class="filters" id="types" role="group" aria-label="Specialty"></div>
+  <p class="notice" id="notice" hidden>These are example profiles while we onboard real stylists.</p>
+  <div class="grid" id="grid" aria-live="polite"></div>
+</div></section>
+
+<section id="tryon" style="padding-top:0"><div class="wrap" style="max-width:760px">
+  <h2>Try a new look</h2><p class="sub">Upload a clear photo, choose a style and get an AI preview. It is only an approximation, and your stylist’s result will differ. You need to be logged in.</p>
+  <form id="tform" class="formgrid">
+    <div class="full"><label for="t-photo">Your photo (face and hair clearly visible)</label><input id="t-photo" type="file" accept="image/jpeg,image/png,image/webp" required /></div>
+    <div><label for="t-style">Style</label><select id="t-style"></select></div>
+    <div><label for="t-color">Hair colour</label><select id="t-color"></select></div>
+    <div class="full"><label class="consent"><input id="t-consent" type="checkbox" required /> I agree that my photo is sent to an AI service to create this preview. Onye Isi does not save it.</label></div>
+    <div class="full"><button class="btn gold" id="t-go" type="submit">Create preview</button><div class="msg" id="t-msg" role="status"></div></div>
+  </form>
+  <div class="tout" id="t-out"></div>
+</div></section>
+
+<section id="how" style="padding-top:0"><div class="wrap">
+  <h2>How it works</h2><p class="sub">Three simple steps.</p>
+  <div class="steps">
+    <div class="step"><b>1</b><h3>Browse</h3><p>Filter by city and specialty to find a professional who matches your hair type and style.</p></div>
+    <div class="step"><b>2</b><h3>Request a booking</h3><p>Choose a service and a date. Your request goes straight to the stylist.</p></div>
+    <div class="step"><b>3</b><h3>Get confirmed</h3><p>The stylist replies to confirm the time and details. Ask our AI guide if you need help choosing.</p></div>
+  </div>
+</div></section>
+
+<section class="join" id="join"><div class="wrap" style="max-width:760px">
+  <h2>Are you a hair professional?</h2><p class="sub">Create a free vendor account, set up your profile with services and photos, and we will review it before it goes live.</p>
+  <div class="row" style="max-width:460px"><button class="btn gold" type="button" data-join="signup">Create a stylist account</button><button class="btn ghost" type="button" data-join="login">I already have an account</button></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">ONYE ISI · Built for the African diaspora in Germany. <em>Onye Isi</em> means “head person” in Igbo.</div></footer>
+
+<dialog id="profile"><button class="x" data-close aria-label="Close">×</button><div id="profile-body"></div></dialog>
+
+<dialog id="booking"><button class="x" data-close aria-label="Close">×</button>
+  <h2 id="b-title">Request a booking</h2><p class="meta" style="margin-bottom:16px">The stylist will contact you to confirm.</p>
+  <form id="bform" class="formgrid">
+    <input type="hidden" id="b-stylist" />
+    <p hidden><label>Leave empty <input id="b-hp" tabindex="-1" autocomplete="off" /></label></p>
+    <div><label for="b-name">Your name</label><input id="b-name" name="name" required /></div>
+    <div><label for="b-email">Email</label><input id="b-email" name="email" type="email" required /></div>
+    <div><label for="b-phone">Phone (optional)</label><input id="b-phone" name="phone" type="tel" /></div>
+    <div><label for="b-date">Preferred date</label><input id="b-date" name="date" type="date" required /></div>
+    <div class="full"><label for="b-service">Service</label><select id="b-service" name="service" required></select></div>
+    <div class="full"><label for="b-notes">Notes (hair length, style inspiration…)</label><textarea id="b-notes" name="notes"></textarea></div>
+    <div class="full"><button class="btn gold" type="submit" style="width:100%">Send request</button><div class="msg" id="b-msg" role="status"></div></div>
+  </form>
+</dialog>
+
+<dialog id="auth"><button class="x" data-close aria-label="Close">×</button>
+  <h2>Welcome to Onye Isi</h2>
+  <div class="tabs"><button class="pill on" type="button" data-mode="login">Log in</button><button class="pill" type="button" data-mode="signup">Create account</button></div>
+  <button class="btn" id="g-btn" type="button" style="width:100%">Continue with Google</button>
+  <p class="meta" style="text-align:center;margin:12px 0 4px">or use your email</p>
+  <form id="aform" class="formgrid">
+    <div class="full su"><label for="a-name">Full name</label><input id="a-name" autocomplete="name" /></div>
+    <div class="full"><label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email" required /></div>
+    <div class="full"><label for="a-pass">Password (min. 8 characters)</label><input id="a-pass" type="password" minlength="8" autocomplete="current-password" required /></div>
+    <div class="full su"><label>I am a…</label><div class="roles"><label><input type="radio" name="role" value="customer" checked /> Customer</label><label><input type="radio" name="role" value="stylist" /> Hair professional</label></div></div>
+    <div class="full"><button class="btn gold" id="a-submit" type="submit" style="width:100%">Log in</button><div class="msg" id="a-msg" role="status"></div><button class="linkbtn" id="forgot" type="button">Forgot your password?</button></div>
+  </form>
+</dialog>
+<dialog id="reset"><button class="x" data-close aria-label="Close">×</button><h2>Set a new password</h2>
+  <form id="rform" class="formgrid" style="margin-top:14px"><div class="full"><label for="r-pass">New password (min. 8 characters)</label><input id="r-pass" type="password" minlength="8" autocomplete="new-password" required /></div>
+  <div class="full"><button class="btn gold" type="submit" style="width:100%">Update password</button><div class="msg" id="r-msg" role="status"></div></div></form>
+</dialog>
+<dialog id="account"><button class="x" data-close aria-label="Close">×</button><div id="acct-body"></div></dialog>
+
+<button class="btn gold" id="chat-fab" type="button" aria-expanded="false" aria-controls="chat">Ask our AI guide</button>
+<div id="chat" role="dialog" aria-label="AI hair guide">
+  <div class="ch"><span>Onye Isi AI guide</span><button id="chat-x" type="button" aria-label="Close chat">×</button></div>
+  <div id="msgs" aria-live="polite"></div>
+  <form class="cf" id="cform"><input id="cin" placeholder="Ask about styles, care or stylists…" aria-label="Message" autocomplete="off" /><button class="btn gold" type="submit">Send</button></form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js"></script>
+<script>
+/* Fallback example profiles, used only if the database cannot be reached. Real data lives in Supabase. */
+const FALLBACK = [
+ {id:1,name:"Ngozi Obi",spec:"Knotless braids & box braids",city:"Berlin",type:"braiding",price:"from €90",bg:"#F6E2B8",bio:"Specialist in lightweight knotless braids with a gentle approach to the edges.",services:[["Knotless braids","€110–180"],["Box braids","€90–150"],["Take-down & wash","€35"]],avail:"Tue–Sat"},
+ {id:2,name:"Tunde Bello",spec:"Fades, tapers & beard design",city:"Munich",type:"barbing",price:"from €25",bg:"#D9E6D3",bio:"Barber focused on clean fades and sharp line-ups for textured hair.",services:[["Fade & line-up","€25–35"],["Beard shaping","€15"],["Cut & beard","€40"]],avail:"Mon–Sat"},
+ {id:3,name:"Chiamaka Eze",spec:"Starter locs & loc maintenance",city:"Frankfurt",type:"locs",price:"from €60",bg:"#E6D5EA",bio:"Helps clients start, maintain and style healthy locs.",services:[["Starter locs","€150–250"],["Retwist","€60–90"],["Loc styling","€45"]],avail:"Wed–Sun"},
+ {id:4,name:"Amara Johnson",spec:"Natural hair care & silk press",city:"Hamburg",type:"natural",price:"from €55",bg:"#F2D7CF",bio:"Moisture-first natural hair care, twist-outs and heat-safe silk presses.",services:[["Wash & twist-out","€55"],["Silk press","€80"],["Deep conditioning","€40"]],avail:"Mon–Fri"},
+ {id:5,name:"Folake Adeyemi",spec:"Wigs, closures & sew-ins",city:"Cologne",type:"weave",price:"from €70",bg:"#D3E3EE",bio:"Natural-looking installs and custom wig making.",services:[["Closure sew-in","€120–180"],["Wig install","€70"],["Custom wig","€200+"]],avail:"Thu–Sun"},
+ {id:6,name:"Emeka Nwosu",spec:"Braids, cornrows & men's styles",city:"Düsseldorf",type:"braiding",price:"from €40",bg:"#EFE0C2",bio:"Clean cornrows and braided styles for men, women and children.",services:[["Cornrows","€40–90"],["Men's braids","€50–100"],["Kids' braids","€35–70"]],avail:"Mon–Sat"}
+];
+/* The publishable key is designed to be public; row-level security in Supabase protects the data. */
+const SB = { url: "https://hregrxngtmekccxzxotz.supabase.co", key: "sb_publishable_U75nqHazrNZBGi6VII0rkg_FNDp0jx2" };
+let STYLISTS = FALLBACK, live = false;
+const TYPES = {all:"All",braiding:"Braiding",locs:"Locs",natural:"Natural hair",barbing:"Barbing",weave:"Weaves & wigs"};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const initials = n => n.split(" ").map(w => w[0]).slice(0, 2).join("");
+let type = "all";
+
+const avatar = s => `<div class="av" style="background:${s.bg}">${s.photo ? `<img src="${esc(s.photo)}" alt="" loading="lazy" />` : esc(initials(s.name))}</div>`;
+function filtered() {
+  const q = $("q").value.trim().toLowerCase(), city = $("city").value;
+  return STYLISTS.filter(s => (type === "all" || s.type === type) && (!city || s.city === city) &&
+    (!q || (s.name + " " + s.spec + " " + s.bio).toLowerCase().includes(q)));
+}
+function render() {
+  const list = filtered();
+  $("grid").innerHTML = list.length ? list.map(s => `
+    <button class="card" type="button" data-id="${s.id}" aria-label="View ${esc(s.name)}">
+      <div class="top">${avatar(s)}
+        <div><h3>${esc(s.name)}</h3><div class="meta">${esc(s.city)}</div></div></div>
+      <span class="tag">${esc(TYPES[s.type])}</span>
+      <div class="meta">${esc(s.spec)}</div><div class="price">${esc(s.price)}</div>
+    </button>`).join("") : '<p class="empty">No stylists match your filters yet. Try another city or specialty.</p>';
+}
+function openProfile(id) {
+  const s = STYLISTS.find(x => x.id === id);
+  $("profile-body").innerHTML = `
+    <div class="top">${avatar(s)}
+      <div><h2>${esc(s.name)}</h2><div class="meta">${esc(s.city)} · ${esc(s.spec)}</div></div></div>
+    <p style="margin-top:14px">${esc(s.bio)}</p>
+    <ul class="svc">${s.services.map(([n, p]) => `<li><span>${esc(n)}</span><strong>${esc(p)}</strong></li>`).join("")}</ul>
+    <div class="meta">Available: ${esc(s.avail)}</div>
+    <div class="row"><button class="btn" data-close type="button">Close</button><button class="btn gold" data-book="${s.id}" type="button">Request booking</button></div>`;
+  $("profile").showModal();
+}
+function openBooking(id) {
+  const s = STYLISTS.find(x => x.id === id);
+  $("profile").close();
+  $("b-title").textContent = "Book " + s.name;
+  $("b-stylist").value = s.id;
+  $("b-service").innerHTML = s.services.map(([n, p]) => `<option>${esc(n)} — ${esc(p)}</option>`).join("");
+  $("b-date").min = new Date().toISOString().slice(0, 10);
+  $("b-name").value = profile?.full_name || user?.user_metadata?.full_name || ""; $("b-email").value = user?.email || ""; $("b-phone").value = profile?.phone || "";
+  $("b-msg").textContent = ""; $("b-msg").className = "msg";
+  $("booking").showModal();
+}
+
+/* ── Supabase (data + auth) ── */
+const sb = window.supabase ? window.supabase.createClient(SB.url, SB.key) : null;
+let user = null, myStylist = null, profile = null, authMode = "login";
+const HAIR = ["", "Wavy (2A–2C)", "Curly (3A–3C)", "Coily (4A–4C)", "Not sure"];
+async function loadProfile() {
+  if (!user) { profile = null; return; }
+  const { data } = await sb.from("profiles").select("*").eq("id", user.id).maybeSingle(); profile = data;
+}
+async function loadStylists() {
+  try {
+    const { data, error } = await sb.from("stylists").select("id,name,spec,city,type,price_from,bio,avail,color,services,is_example,photo_url").eq("status", "approved").order("id");
+    if (error) throw error;
+    STYLISTS = data.map(s => ({ id: s.id, name: s.name, spec: s.spec, city: s.city, type: s.type, price: s.price_from || "",
+      bg: s.color || "#F6E2B8", bio: s.bio || "", services: Array.isArray(s.services) ? s.services : [], avail: s.avail || "", example: s.is_example, photo: s.photo_url }));
+    live = true;
+  } catch (e) { STYLISTS = FALLBACK; live = false; }
+  $("notice").hidden = !(STYLISTS.some(s => s.example) || !live);
+}
+function buildCities() {
+  $("city").innerHTML = '<option value="">All cities</option>' + [...new Set(STYLISTS.map(s => s.city))].sort().map(c => `<option>${esc(c)}</option>`).join("");
+}
+async function init() {
+  $("grid").innerHTML = '<p class="empty">Loading stylists…</p>';
+  await loadStylists(); buildCities(); render();
+}
+async function submitBooking(form) {
+  const msg = $("b-msg"); msg.className = "msg";
+  if ($("b-hp").value) { msg.className = "msg ok"; msg.textContent = "Request sent!"; return; } // honeypot
+  if (!live) { msg.className = "msg err"; msg.textContent = "Bookings are temporarily unavailable. Please try again later."; return; }
+  msg.textContent = "Sending…";
+  const { error } = await sb.from("bookings").insert({ stylist_id: +$("b-stylist").value, customer_id: user?.id ?? null,
+    customer_name: $("b-name").value.trim(), customer_email: $("b-email").value.trim(), customer_phone: $("b-phone").value.trim() || null,
+    service: $("b-service").value, preferred_date: $("b-date").value, notes: $("b-notes").value.trim() || null });
+  if (error) { msg.className = "msg err"; msg.textContent = error.code === "23514" ? "Please check your details and try again." : "Something went wrong. Please try again."; return; }
+  msg.className = "msg ok"; msg.textContent = "Request sent! The stylist will contact you soon."; form.reset();
+}
+
+/* Accounts: customers and stylists sign up with email + password (Supabase Auth) */
+function setMode(m) {
+  authMode = m; $("aform").classList.toggle("signup", m === "signup");
+  document.querySelectorAll("[data-mode]").forEach(b => b.classList.toggle("on", b.dataset.mode === m));
+  $("a-submit").textContent = m === "signup" ? "Create account" : "Log in";
+  $("a-pass").autocomplete = m === "signup" ? "new-password" : "current-password"; $("a-msg").textContent = "";
+}
+function openAuth(m = "login", role) { setMode(m); if (role) document.querySelector(`input[name="role"][value="${role}"]`).checked = true; $("auth").showModal(); }
+async function doAuth() {
+  const msg = $("a-msg"), email = $("a-email").value.trim(), password = $("a-pass").value; msg.className = "msg";
+  if (!sb) { msg.className = "msg err"; msg.textContent = "Accounts are unavailable right now."; return; }
+  if (password.length < 8) { msg.className = "msg err"; msg.textContent = "Use a password with at least 8 characters."; return; }
+  msg.textContent = "Please wait…";
+  if (authMode === "signup") {
+    const role = document.querySelector('input[name="role"]:checked').value;
+    const { data, error } = await sb.auth.signUp({ email, password, options: { data: { full_name: $("a-name").value.trim(), role } } });
+    if (error) { msg.className = "msg err"; msg.textContent = error.message; return; }
+    if (!data.session) { msg.className = "msg ok"; msg.textContent = "Almost done! Check your email to confirm your address, then log in."; return; }
+  } else {
+    const { error } = await sb.auth.signInWithPassword({ email, password });
+    if (error) { msg.className = "msg err"; msg.textContent = "Email or password is incorrect."; return; }
+  }
+  $("aform").reset(); $("auth").close(); openAccount();
+}
+function updateNav() { $("nav-auth").textContent = user ? "My account" : "Log in"; }
+const STATUS = { pending: "Pending", confirmed: "Confirmed", cancelled: "Cancelled", approved: "Live", rejected: "Not approved" };
+function servicesToText(a) { return (a || []).map(x => x[0] + " | " + (x[1] || "")).join("\n"); }
+function parseServices(t) { return t.split("\n").map(l => l.split("|").map(x => x.trim())).filter(a => a[0]).map(a => [a[0], a[1] || ""]).slice(0, 12); }
+function stylistForm(st) {
+  const v = k => esc(st?.[k] || "");
+  return `<h3 class="sec">${st ? "Your stylist profile" : "Create your stylist profile"} ${st ? `<span class="chip ${st.status}">${STATUS[st.status]}</span>` : ""}</h3>
+  <p class="meta">${st && st.status === "approved" ? "Your profile is live." : "Your profile appears on the site after we approve it."}</p>
+  <form id="sform" class="formgrid" style="margin-top:12px">
+    <div><label>Name or studio</label><input name="name" value="${v("name")}" required maxlength="80" /></div>
+    <div><label>City</label><input name="city" value="${v("city")}" required maxlength="60" /></div>
+    <div><label>Specialty (short)</label><input name="spec" value="${v("spec")}" required maxlength="120" /></div>
+    <div><label>Category</label><select name="type">${Object.entries(TYPES).filter(([k]) => k !== "all").map(([k, n]) => `<option value="${k}"${st?.type === k ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></div>
+    <div><label>Starting price</label><input name="price_from" value="${v("price_from")}" placeholder="from €60" maxlength="30" /></div>
+    <div><label>Availability</label><input name="avail" value="${v("avail")}" placeholder="Tue–Sat" maxlength="80" /></div>
+    <div class="full"><label>Profile photo (JPG, PNG or WebP, optional)</label>${st?.photo_url ? `<img class="prev" src="${esc(st.photo_url)}" alt="Current photo" />` : ""}<input type="file" name="photo" accept="image/jpeg,image/png,image/webp" /></div>
+    <div class="full"><label>About you</label><textarea name="bio" maxlength="600">${v("bio")}</textarea></div>
+    <div class="full"><label>Services, one per line: name | price</label><textarea name="services" placeholder="Knotless braids | €110–180">${esc(servicesToText(st?.services))}</textarea></div>
+    <div class="full"><button class="btn gold" type="submit">${st ? "Save changes" : "Create profile"}</button><div class="msg" id="s-msg" role="status"></div></div>
+  </form>`;
+}
+function bookingsList(list, asStylist) {
+  if (!list.length) return '<p class="meta" style="margin-top:8px">No bookings yet.</p>';
+  return list.map(b => `<div class="bk"><strong>${esc(b.service)}</strong> <span class="chip ${b.status}">${STATUS[b.status]}</span>
+    <div class="meta">${esc(b.preferred_date)}${asStylist ? ` · ${esc(b.customer_name)} · ${esc(b.customer_email)}${b.customer_phone ? " · " + esc(b.customer_phone) : ""}` : ` · ${esc(b.stylists?.name || "Stylist")}`}</div>
+    ${b.notes ? `<div class="meta">“${esc(b.notes)}”</div>` : ""}
+    ${asStylist && b.status === "pending" ? `<div class="row"><button class="btn gold" data-status="confirmed" data-id="${b.id}" type="button">Confirm</button><button class="btn" data-status="cancelled" data-id="${b.id}" type="button">Decline</button></div>` : ""}</div>`).join("");
+}
+function detailsForm() {
+  const p = profile || {}, vendor = p.role === "stylist" || myStylist;
+  return `<h3 class="sec">Your details</h3><form id="pform" class="formgrid" style="margin-top:10px">
+    <div><label>Full name</label><input name="full_name" value="${esc(p.full_name || "")}" maxlength="80" required /></div>
+    <div><label>Phone (optional)</label><input name="phone" type="tel" value="${esc(p.phone || "")}" maxlength="30" /></div>
+    ${vendor ? "" : `<div class="full"><label>Hair type (optional)</label><select name="hair_type">${HAIR.map(h => `<option value="${esc(h)}"${p.hair_type === h ? " selected" : ""}>${esc(h || "Not set")}</option>`).join("")}</select></div>`}
+    <div class="full"><button class="btn" type="submit">Save details</button><div class="msg" id="p-msg" role="status"></div></div></form>`;
+}
+async function openAccount() {
+  if (!user) return openAuth();
+  $("acct-body").innerHTML = '<p class="meta">Loading…</p>'; if (!$("account").open) $("account").showModal();
+  const { data: st } = await sb.from("stylists").select("*").eq("owner_id", user.id).maybeSingle();
+  myStylist = st; await loadProfile();
+  const vendor = !!st || profile?.role === "stylist";
+  let html = `<h2>My account <span class="chip">${vendor ? "Vendor" : "Customer"}</span></h2><p class="meta">${esc(user.email)}</p>` + detailsForm();
+  if (vendor) {
+    html += stylistForm(st);
+    if (st) { const { data } = await sb.from("bookings").select("*").eq("stylist_id", st.id).order("created_at", { ascending: false });
+      html += '<h3 class="sec">Booking requests</h3>' + bookingsList(data || [], true); }
+  } else {
+    const { data } = await sb.from("bookings").select("*, stylists(name)").eq("customer_id", user.id).order("created_at", { ascending: false });
+    html += '<h3 class="sec">My bookings</h3>' + bookingsList(data || [], false)
+      + '<p class="meta" style="margin-top:18px">Do you offer hair services?</p><button class="btn" id="become-stylist" type="button" style="margin-top:6px">Create a stylist profile</button>';
+  }
+  $("acct-body").innerHTML = html + '<div class="row"><button class="btn" id="logout" type="button">Log out</button><button class="btn danger" id="del-acct" type="button">Delete account</button></div>';
+}
+async function resizeImage(file, max = 600) {
+  const bmp = await createImageBitmap(file), k = Math.min(1, max / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas"); c.width = Math.round(bmp.width * k); c.height = Math.round(bmp.height * k);
+  c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+  return new Promise((ok, no) => c.toBlob(b => b ? ok(b) : no(new Error("image")), "image/jpeg", 0.85));
+}
+async function uploadPhoto(file) {
+  const path = `${user.id}/avatar.jpg`, bucket = sb.storage.from("stylist-photos");
+  const { error } = await bucket.upload(path, await resizeImage(file), { upsert: true, contentType: "image/jpeg" });
+  if (error) throw error;
+  return bucket.getPublicUrl(path).data.publicUrl + "?v=" + Date.now();
+}
+async function deleteAccount() {
+  if (!confirm("Delete your account permanently? Your profile and personal data will be removed. This cannot be undone.")) return;
+  try { await sb.storage.from("stylist-photos").remove([`${user.id}/avatar.jpg`]); } catch (e) {}
+  const { error } = await sb.rpc("delete_my_account");
+  if (error) { alert("Could not delete the account. Please try again."); return; }
+  await sb.auth.signOut({ scope: "local" }); $("account").close(); await init(); alert("Your account has been deleted.");
+}
+async function saveProfile(form) {
+  const f = Object.fromEntries(new FormData(form)), msg = $("s-msg"); msg.className = "msg"; msg.textContent = "Saving…";
+  const row = { name: f.name.trim(), city: f.city.trim(), spec: f.spec.trim(), type: f.type, price_from: f.price_from.trim() || null,
+    avail: f.avail.trim() || null, bio: f.bio.trim() || null, services: parseServices(f.services) };
+  if (f.photo && f.photo.size) {
+    try { row.photo_url = await uploadPhoto(f.photo); }
+    catch (e) { msg.className = "msg err"; msg.textContent = "Photo upload failed. Use a JPG, PNG or WebP under 2 MB."; return; }
+  }
+  const colors = ["#F6E2B8", "#D9E6D3", "#E6D5EA", "#F2D7CF", "#D3E3EE", "#EFE0C2"];
+  const { error } = myStylist ? await sb.from("stylists").update(row).eq("id", myStylist.id)
+    : await sb.from("stylists").insert({ ...row, owner_id: user.id, color: colors[Math.floor(Math.random() * colors.length)] });
+  if (error) { msg.className = "msg err"; msg.textContent = "Could not save. Please check the fields and try again."; return; }
+  await openAccount(); const m = $("s-msg"); if (m) { m.className = "msg ok"; m.textContent = "Saved."; }
+}
+
+/* ── AI try-on (provider keys stay on the server: netlify/functions/tryon.mjs) ── */
+const LOOKS = [["knotless-braids", "Knotless braids"], ["box-braids", "Box braids"], ["cornrows", "Cornrows"], ["locs", "Locs"], ["twist-out", "Twist-out"],
+  ["afro", "Natural afro"], ["bantu-knots", "Bantu knots"], ["silk-press", "Silk press"], ["fade", "Low fade"]];
+const SHADES = [["", "Keep my colour"], ["black", "Natural black"], ["brown", "Dark brown"], ["honey", "Honey blonde"], ["burgundy", "Burgundy"], ["copper", "Copper"]];
+const toDataUrl = blob => new Promise((ok, no) => { const r = new FileReader(); r.onload = () => ok(r.result); r.onerror = no; r.readAsDataURL(blob); });
+const TRYON_ERR = { login_required: "Please log in to use the try-on.", rate_limited: "You have reached the limit for now. Please try again later.",
+  moderated: "That photo could not be processed. Try a clear, well-lit photo of your face and hair.", not_configured: "The try-on isn’t available yet." };
+async function tryOn(file) {
+  const msg = $("t-msg"), out = $("t-out"); msg.className = "msg"; out.innerHTML = "";
+  const { data } = sb ? await sb.auth.getSession() : { data: {} };
+  if (!data.session) { msg.className = "msg err"; msg.textContent = TRYON_ERR.login_required; openAuth(); return; }
+  $("t-go").disabled = true; msg.textContent = "Creating your preview… this can take up to a minute.";
+  const headers = { "Content-Type": "application/json", Authorization: "Bearer " + data.session.access_token };
+  try {
+    const image = await toDataUrl(await resizeImage(file, 1024));
+    const provider = new URLSearchParams(location.search).get("provider") || undefined;  // ?provider=gemini or flux, for comparing
+    let r = await fetch("/api/tryon", { method: "POST", headers, body: JSON.stringify({ image, style: $("t-style").value, color: $("t-color").value || undefined, provider }) });
+    let d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.error || "provider_error");
+    for (let i = 0; !d.image && d.job && i < 40; i++) {            // FLUX is asynchronous: poll until ready
+      await new Promise(ok => setTimeout(ok, 2000));
+      r = await fetch("/api/tryon?job=" + encodeURIComponent(d.job), { headers }); d = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(d.error || "provider_error");
+    }
+    if (!d.image) throw new Error("timeout");
+    out.innerHTML = `<figure><img src="${image}" alt="Your original photo" /><figcaption>Original</figcaption></figure>
+      <figure><img src="${esc(d.image)}" alt="AI preview of the new hairstyle" /><figcaption>AI preview (approximate) · <a href="${esc(d.image)}" download="onye-isi-preview.png">Download</a></figcaption></figure>`;
+    msg.className = "msg ok"; msg.textContent = "Here is your preview. Show it to your stylist as inspiration.";
+  } catch (e) {
+    msg.className = "msg err"; msg.textContent = TRYON_ERR[e.message] || "The preview could not be created. Please try again.";
+  }
+  $("t-go").disabled = false;
+}
+$("t-style").innerHTML = LOOKS.map(([k, n]) => `<option value="${k}">${esc(n)}</option>`).join("");
+$("t-color").innerHTML = SHADES.map(([k, n]) => `<option value="${k}">${esc(n)}</option>`).join("");
+$("tform").addEventListener("submit", e => { e.preventDefault(); tryOn($("t-photo").files[0]); });
+
+/* ── Chat (key stays on the server: netlify/functions/chat.mjs) ── */
+const history = [];
+const SYSTEM = () => `You are the Onye Isi AI guide, a friendly expert on Black and textured hair care and on the stylists listed on this marketplace in Germany.
+Give practical, concise advice (protective styles, maintenance, hair types, how long styles last, aftercare). For health or scalp conditions, suggest seeing a doctor or dermatologist.
+Stylists on the site (example profiles): ${STYLISTS.map(s => `${s.name} (${s.city}; ${TYPES[s.type]}; ${s.spec}; ${s.price})`).join(" | ")}.
+Only recommend stylists from this list, and tell users to open a profile and use "Request booking". Never invent prices, availability or reviews.
+Format: short paragraphs or bullet lists; no tables.`;
+function md(t) {
+  let out = "", ul = false;
+  const inl = x => x.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+  for (const l of esc(t).split("\n")) {
+    const li = l.match(/^\s*(?:[-•*]|\d+\.)\s+(.*)/);
+    if (li) { if (!ul) { out += "<ul>"; ul = true; } out += "<li>" + inl(li[1]) + "</li>"; continue; }
+    if (ul) { out += "</ul>"; ul = false; }
+    if (l.trim()) out += "<p>" + inl(l.replace(/^#+\s*/, "")) + "</p>";
+  }
+  return out + (ul ? "</ul>" : "");
+}
+function addMsg(cls, html) {
+  const d = document.createElement("div"); d.className = "m " + cls; d.innerHTML = html;
+  $("msgs").appendChild(d); $("msgs").scrollTop = $("msgs").scrollHeight; return d;
+}
+let busy = false;
+async function sendChat(text) {
+  if (!text || busy) return; busy = true;
+  addMsg("me", esc(text)); $("cin").value = "";
+  const wait = addMsg("bot", "…");
+  history.push({ role: "user", content: text }); while (history.length > 10) history.shift();
+  try {
+    const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ system: SYSTEM(), messages: history.map(m => ({ role: m.role, content: m.content.slice(0, 5500) })) }) });
+    if (!r.ok) throw new Error(r.status);
+    const reply = ((await r.json()).reply || "").trim();
+    if (!reply) throw new Error("empty");
+    history.push({ role: "assistant", content: reply }); wait.innerHTML = md(reply);
+  } catch (e) {
+    history.pop(); wait.classList.add("err");
+    wait.textContent = String(e.message) === "429" ? "Too many requests right now. Please wait a moment and try again." : "The guide is temporarily unavailable. Please try again shortly.";
+  }
+  $("msgs").scrollTop = $("msgs").scrollHeight; busy = false;
+}
+
+/* ── Wiring ── */
+$("types").innerHTML = Object.entries(TYPES).map(([k, v]) => `<button class="pill${k === "all" ? " on" : ""}" type="button" data-type="${k}">${esc(v)}</button>`).join("");
+$("types").addEventListener("click", e => { const b = e.target.closest("[data-type]"); if (!b) return; type = b.dataset.type;
+  document.querySelectorAll(".pill").forEach(p => p.classList.toggle("on", p === b)); render(); });
+$("q").addEventListener("input", render); $("city").addEventListener("change", render);
+$("grid").addEventListener("click", e => { const c = e.target.closest("[data-id]"); if (c) openProfile(+c.dataset.id); });
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-book]"); if (b) openBooking(+b.dataset.book);
+  const x = e.target.closest("[data-close]"); if (x) x.closest("dialog").close();
+  if (e.target.tagName === "DIALOG") e.target.close();
+});
+$("bform").addEventListener("submit", e => { e.preventDefault(); submitBooking(e.target); });
+if (sb) {
+  sb.auth.getSession().then(({ data }) => { user = data.session?.user || null; updateNav(); loadProfile(); });
+  sb.auth.onAuthStateChange((ev, session) => { user = session?.user || null; updateNav(); setTimeout(loadProfile, 0); if (ev === "PASSWORD_RECOVERY") $("reset").showModal(); });
+}
+$("forgot").addEventListener("click", async () => {
+  const email = $("a-email").value.trim(), msg = $("a-msg");
+  if (!email) { msg.className = "msg err"; msg.textContent = "Enter your email above first."; return; }
+  await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+  msg.className = "msg ok"; msg.textContent = "If that email has an account, a reset link is on its way.";
+});
+$("rform").addEventListener("submit", async e => {
+  e.preventDefault(); const m = $("r-msg"); m.className = "msg";
+  const { error } = await sb.auth.updateUser({ password: $("r-pass").value });
+  if (error) { m.className = "msg err"; m.textContent = error.message; return; }
+  m.className = "msg ok"; m.textContent = "Password updated. You are logged in.";
+  setTimeout(() => { $("reset").close(); history.replaceState(null, "", location.pathname); }, 1200);
+});
+$("g-btn").addEventListener("click", async () => {
+  const msg = $("a-msg");
+  const { error } = sb ? await sb.auth.signInWithOAuth({ provider: "google", options: { redirectTo: location.origin + location.pathname } }) : { error: true };
+  if (error) { msg.className = "msg err"; msg.textContent = "Google sign-in isn’t available right now."; }
+});
+document.querySelectorAll("[data-join]").forEach(b => b.addEventListener("click", () => openAuth(b.dataset.join, b.dataset.join === "signup" ? "stylist" : undefined)));
+$("nav-auth").addEventListener("click", () => user ? openAccount() : openAuth());
+document.querySelectorAll("[data-mode]").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
+$("aform").addEventListener("submit", e => { e.preventDefault(); doAuth(); });
+$("acct-body").addEventListener("submit", async e => {
+  if (e.target.id === "sform") { e.preventDefault(); saveProfile(e.target); }
+  if (e.target.id === "pform") {
+    e.preventDefault(); const f = Object.fromEntries(new FormData(e.target)), m = $("p-msg"); m.className = "msg"; m.textContent = "Saving…";
+    const row = { full_name: f.full_name.trim(), phone: f.phone.trim() || null }; if ("hair_type" in f) row.hair_type = f.hair_type || null;
+    const { error } = await sb.from("profiles").update(row).eq("id", user.id);
+    if (error) { m.className = "msg err"; m.textContent = "Could not save. Please try again."; return; }
+    await loadProfile(); m.className = "msg ok"; m.textContent = "Saved.";
+  }
+});
+$("acct-body").addEventListener("click", async e => {
+  if (e.target.id === "logout") { await sb.auth.signOut(); $("account").close(); return; }
+  if (e.target.id === "del-acct") return deleteAccount();
+  if (e.target.id === "become-stylist") { await sb.from("profiles").update({ role: "stylist" }).eq("id", user.id); return openAccount(); }
+  const b = e.target.closest("[data-status]");
+  if (b) { b.disabled = true; await sb.from("bookings").update({ status: b.dataset.status }).eq("id", +b.dataset.id); openAccount(); }
+});
+$("chat-fab").addEventListener("click", () => {
+  const open = $("chat").classList.toggle("open"); $("chat-fab").setAttribute("aria-expanded", open);
+  if (open && !$("msgs").children.length) addMsg("bot", "<p>Hello! Ask me about braids, locs, natural hair care, or which stylist might suit you.</p>");
+  if (open) $("cin").focus();
+});
+$("chat-x").addEventListener("click", () => { $("chat").classList.remove("open"); $("chat-fab").setAttribute("aria-expanded", false); });
+$("cform").addEventListener("submit", e => { e.preventDefault(); sendChat($("cin").value.trim()); });
+init();
+</script>
+</body>
+</html>
